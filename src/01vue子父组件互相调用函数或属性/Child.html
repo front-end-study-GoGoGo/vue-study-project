@@ -1,0 +1,87 @@
+<!-- vue子父组件互相调用函数或属性 -->
+<!-- 子组件 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello Word</title>
+    <script src="../../public/vue.js"></script>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90vw;
+        height: 90vh;
+        border: 1px solid yellowgreen;
+      }
+
+      .parent-button-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 20px;
+        border: 1px solid red;
+        height: 80px;
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        width: 400px;
+        border: 1px solid black;
+        margin-top: 30px;
+      }
+
+      .child-button-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 20px;
+        border: 1px solid red;
+        height: 80px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app" id="appChild">
+      <div class="child-button-group">
+        <button v-on:click="childFun()">调用子组件方法</button>
+        &nbsp;&nbsp;&nbsp;
+        <button>获取子组件属性</button>
+      </div>
+    </div>
+    <script>
+      var vm1 = new Vue({
+        el: '#appChild',
+        data: {
+          message: 'Hello,Vue!',
+          childValue:'我是子组件的一个属性',
+        },
+        methods:{
+          childFun(){
+            this.message='执行了子组件的方法'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
